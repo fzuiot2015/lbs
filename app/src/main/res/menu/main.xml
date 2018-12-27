@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_sys"
+        android:icon="@mipmap/icon_sys"
+        android:orderInCategory="100"
+        android:title="扫一扫"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_fukuan"
+        android:icon="@mipmap/icon_fukuan"
+        android:orderInCategory="100"
+        android:title="付款"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_hezuo"
+        android:icon="@mipmap/icon_woyaohezuo"
+        android:orderInCategory="100"
+        android:title="我要合作"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_guanzhu"
+        android:icon="@mipmap/icon_tianjiaguanzhu"
+        android:orderInCategory="100"
+        android:title="添加关注"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_shanghu"
+        android:icon="@mipmap/icon_tianjiashanghu"
+        android:orderInCategory="100"
+        android:title="添加商户"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_dianping"
+        android:icon="@mipmap/icon_xiedianping"
+        android:orderInCategory="100"
+        android:title="写点评"
+        app:showAsAction="never" />
+
+</menu>

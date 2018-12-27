@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_car"
+                    android:text="汽车" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_fuwu"
+                    android:text="服务" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_jiaoguan"
+                    android:text="交管局" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_jiashi"
+                    android:text="驾照" />
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_jiayou"
+                    android:text="加油站" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_jichutiyan"
+                    android:text="基础体验" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_jiujia"
+                    android:text="酒驾自检" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_location"
+                    android:text="当前位置" />
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_rule"
+                    android:text="规则" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_shigu"
+                    android:text="交通事故" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_tijian"
+                    android:text="体检报告" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_tingche"
+                    android:text="停车场" />
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_wc"
+                    android:text="公共厕所" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_weixiu"
+                    android:text="维修店" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_weizhang"
+                    android:text="违章查询" />
+
+                <TextView
+                    style="@style/style_icon"
+                    android:drawableTop="@mipmap/icon_yiliao"
+                    android:text="医疗知识" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

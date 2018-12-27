@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_shigu"
+            android:icon="@mipmap/icon_shigu"
+            android:title="事故" />
+        <item
+            android:id="@+id/nav_baoxian"
+            android:icon="@mipmap/icon_rule"
+            android:title="保险" />
+        <item
+            android:id="@+id/nav_anquan"
+            android:icon="@mipmap/icon_jiaoguan"
+            android:title="安全" />
+        <item
+            android:id="@+id/nav_youjia"
+            android:icon="@mipmap/icon_youjia"
+            android:title="油价查询" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@mipmap/icon_user"
+            android:title="去登陆" />
+    </group>
+
+</menu>

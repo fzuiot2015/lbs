@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginLeft="@dimen/dp_60"
+        android:layout_marginRight="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_80"
+        android:id="@+id/spinner_province" />
+
+    <TextView
+        android:id="@+id/tv_inquire"
+        style="@style/common_button"
+        android:layout_marginLeft="@dimen/dp_60"
+        android:layout_marginRight="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_150"
+        android:text="@string/inquire" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/dp_50"
+        android:layout_marginRight="@dimen/dp_150"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/tv_inquire"
+        android:layout_marginTop="@dimen/dp_40"
+        android:text="0号柴油的价格:"/>
+
+    <TextView
+        android:id="@+id/price_dieselOil0"
+        android:layout_marginLeft="@dimen/dp_150"
+        android:layout_marginRight="@dimen/dp_80"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/tv_inquire"
+        android:layout_marginTop="@dimen/dp_40" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_150"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/price_dieselOil0"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="90号汽油的价格:"/>
+
+    <TextView
+        android:id="@+id/price_gasoline90"
+        android:layout_marginLeft="@dimen/dp_150"
+        android:layout_marginRight="@dimen/dp_80"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/price_dieselOil0"
+        android:layout_marginTop="@dimen/dp_20" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_150"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/price_gasoline90"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="93号汽油的价格:"/>
+
+    <TextView
+        android:id="@+id/price_gasoline93"
+        android:layout_marginLeft="@dimen/dp_150"
+        android:layout_marginRight="@dimen/dp_80"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/price_gasoline90"
+        android:layout_marginTop="@dimen/dp_20" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_150"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/price_gasoline93"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="97号汽油的价格:"/>
+
+    <TextView
+        android:id="@+id/price_gasoline97"
+        android:layout_marginLeft="@dimen/dp_150"
+        android:layout_marginRight="@dimen/dp_80"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@id/price_gasoline93"
+        android:layout_marginTop="@dimen/dp_20" />
+
+</RelativeLayout>
