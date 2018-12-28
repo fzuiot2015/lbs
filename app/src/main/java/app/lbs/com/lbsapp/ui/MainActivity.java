@@ -127,19 +127,31 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_shigu) {//事故
-            goAccidentPage();
-        } else if (id == R.id.nav_baoxian) {
-            goInsurancePage();
-        } else if (id == R.id.nav_anquan) {
-            goSafePage();
-        } else if (id == R.id.nav_youjia) {
-            goGasPage();
-        } else if (id == R.id.logout) {
-            goLoginPage();
-        } else if (id == R.id.imageView) {
-            goLoginPage();
+        switch (id) {
+            case R.id.nav_shigu:
+                goAccidentPage();
+                break;
+            case R.id.nav_baoxian:
+                goInsurancePage();
+                break;
+            case R.id.nav_anquan:
+                goSafePage();
+                break;
+            case R.id.nav_youjia:
+                goGasPage();
+                break;
+            case R.id.logout:
+                goLoginPage();
+                break;
+            case R.id.imageView:
+                goLoginPage();
+                break;
+            case R.id.nav_kaoti:
+                goExamPage();
+                break;
+            case R.id.nav_xianxing:
+                goLimitPage();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -164,6 +176,16 @@ public class MainActivity extends AppCompatActivity
 
     private void goGasPage() {
         Intent intent = new Intent(this, GasActivity.class);
+        startActivity(intent);
+    }
+
+    private void goExamPage() {
+        Intent intent = new Intent(this, ExamActivity.class);
+        startActivity(intent);
+    }
+
+    private void goLimitPage() {
+        Intent intent = new Intent(this, LimitActivity.class);
         startActivity(intent);
     }
 

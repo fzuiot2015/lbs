@@ -30,8 +30,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView titleTv;
     private TextView registerTv;
     private ImageView lookImg;
-    private EditText accEt;
+    private EditText usernameEt;
     private EditText pwdEt;
+    private EditText nameEt;
+    private EditText phoneEt;
+    private EditText addressEt;
+    private EditText driverLicenseEt;
     private Toolbar mToolbar;
     private boolean isLook = false;
 
@@ -50,8 +54,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         registerTv = findViewById(R.id.tv_to_register);
         registerTv.setOnClickListener(this);
         lookImg = findViewById(R.id.img_look);
-        pwdEt = findViewById(R.id.et_pwd);
-        accEt = findViewById(R.id.et_phone);
+        usernameEt = findViewById(R.id.et_register_username);
+        pwdEt = findViewById(R.id.et_register_pwd);
+
+        nameEt = findViewById(R.id.et_register_name);
+        phoneEt = findViewById(R.id.et_register_phone);
+        driverLicenseEt = findViewById(R.id.et_register_driver_license);
+
         titleTv.setText("注册");
         lookImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_to_register:
-                final String userName = accEt.getText().toString().trim();
+                final String userName = usernameEt.getText().toString().trim();
                 if (TextUtils.isEmpty(userName)) {
                     showMsg("请输入用户名");
                     return;
@@ -102,9 +111,29 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     showMsg("请输入密码");
                     return;
                 }
+
+                String name = nameEt.getText().toString().trim();
+                if (TextUtils.isEmpty(pwd)) {
+                    showMsg("请输入姓名");
+                    return;
+                }
+                String phone = phoneEt.getText().toString().trim();
+                if (TextUtils.isEmpty(pwd)) {
+                    showMsg("请输入手机号");
+                    return;
+                }
+                String driverLicense = driverLicenseEt.getText().toString().trim();
+                if (TextUtils.isEmpty(pwd)) {
+                    showMsg("请输入驾驶证号");
+                    return;
+                }
+
                 Map<String, String> params = new HashMap<>();
                 params.put("username", userName);
                 params.put("pass", pwd);
+                params.put("name", name);
+                params.put("phone", phone);
+                params.put("driverLicense", driverLicense);
                 NetUtils.getInstance().postDataAsynToNet(HttpConstant.REGISTER, params, new NetUtils.MyNetCall() {
                     @Override
                     public void success(Call call, Response response) throws IOException {
@@ -122,15 +151,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             showMsg(bean.getMessage());
                         }
                     }
+
                     @Override
                     public void failed(Call call, IOException e) {
                     }
                 });
-
-
                 break;
         }
     }
+
     private void showMsg(final String msg) {
         runOnUiThread(new Runnable() {
             @Override
@@ -139,5 +168,4 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
     }
-
 }

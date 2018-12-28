@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginTv.setOnClickListener(this);
         lookImg = findViewById(R.id.img_look);
         pwdEt = findViewById(R.id.et_pwd);
-        accEt = findViewById(R.id.et_phone);
+        accEt = findViewById(R.id.et_username);
         titleTv.setText("登录");
         lookImg.setOnClickListener(new View.OnClickListener() {
             @Override

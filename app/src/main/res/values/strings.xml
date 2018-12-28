@@ -6,8 +6,12 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="hint_phone">请输入账号</string>
+    <string name="hint_username">请输入账号</string>
     <string name="hint_pwd">请输入密码</string>
+    <string name="hint_name">请输入姓名</string>
+    <string name="hint_phone">请输入手机号</string>
+    <string name="hint_driver_license">请输入驾驶证号</string>
+
     <string name="login">登录</string>
     <string name="to_register">去注册</string>
     <string name="to_login">去登陆</string>

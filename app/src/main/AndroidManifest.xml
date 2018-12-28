@@ -52,7 +52,9 @@
         <activity android:name=".ui.GasActivity" />
         <activity android:name=".ui.SafeActivity" />
         <activity android:name=".ui.InsuranceActivity" />
-        <activity android:name=".ui.AccidentActivity"></activity>
+        <activity android:name=".ui.AccidentActivity" />
+        <activity android:name=".ui.ExamActivity" />
+        <activity android:name=".ui.LimitActivity"></activity>
     </application>
 
 </manifest>

@@ -22,6 +22,16 @@
             android:title="油价查询" />
 
         <item
+            android:id="@+id/nav_kaoti"
+            android:icon="@mipmap/icon_youjia"
+            android:title="驾照考题" />
+
+        <item
+            android:id="@+id/nav_xianxing"
+            android:icon="@mipmap/icon_youjia"
+            android:title="尾号限行" />
+
+        <item
             android:id="@+id/logout"
             android:icon="@mipmap/icon_user"
             android:title="去登陆" />
