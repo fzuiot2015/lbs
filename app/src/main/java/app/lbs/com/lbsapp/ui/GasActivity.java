@@ -107,7 +107,6 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
         price_gasoline97 = findViewById(R.id.price_gasoline97);
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
