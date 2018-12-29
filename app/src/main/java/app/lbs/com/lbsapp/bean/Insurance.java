@@ -1,15 +1,13 @@
 package app.lbs.com.lbsapp.bean;
 
-import java.util.Date;
-
 public class Insurance {
     private Long id;
     private Long userId;
     private String insurer;
     private String policyId;
     private String insurancePhone;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
 
     public Long getId() {
         return id;
@@ -51,19 +49,19 @@ public class Insurance {
         this.insurancePhone = insurancePhone;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 }

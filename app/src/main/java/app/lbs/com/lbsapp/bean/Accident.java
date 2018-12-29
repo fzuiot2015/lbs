@@ -1,11 +1,9 @@
 package app.lbs.com.lbsapp.bean;
 
-import java.util.Date;
-
 public class Accident {
     private Long id;
     private Long userId;
-    private Date time;
+    private String time;
     private Float lat;
     private Float lng;
     private String address;
@@ -27,11 +25,11 @@ public class Accident {
         this.userId = userId;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

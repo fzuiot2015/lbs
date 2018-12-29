@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import app.lbs.com.lbsapp.R;
@@ -45,10 +43,9 @@ public class InsuranceAdapter extends ArrayAdapter<Insurance> {
             insurer.setText(insurance.getInsurer());
             policyId.setText("保单号： " + insurance.getPolicyId());
             insurancePhone.setText("保险电话： " + insurance.getInsurancePhone());
-            Date startTime = insurance.getStartTime();
-            Date endTime = insurance.getEndTime();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            time.setText(format.format(startTime) + " - " + format.format(endTime));
+            String startTime = insurance.getStartTime();
+            String endTime = insurance.getEndTime();
+            time.setText(startTime + " - " + endTime);
         }
         return view;
     }

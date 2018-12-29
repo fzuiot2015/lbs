@@ -13,15 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.api.HttpConstant;
 import app.lbs.com.lbsapp.api.NetUtils;
-import app.lbs.com.lbsapp.bean.BaseBean;
+import app.lbs.com.lbsapp.bean.LoginResult;
+import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -30,14 +33,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView titleTv;
     private TextView registerTv;
     private ImageView lookImg;
+    private ImageView lookImg2;
     private EditText usernameEt;
     private EditText pwdEt;
+    private EditText pwdEt2;
     private EditText nameEt;
     private EditText phoneEt;
-    private EditText addressEt;
     private EditText driverLicenseEt;
     private Toolbar mToolbar;
     private boolean isLook = false;
+    private boolean isLook2 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +56,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mToolbar = findViewById(R.id.toolbar);
         initToolBar();
         titleTv = findViewById(R.id.tv_action_title);
-        registerTv = findViewById(R.id.tv_to_register);
+        registerTv = findViewById(R.id.tv_register);
         registerTv.setOnClickListener(this);
-        lookImg = findViewById(R.id.img_look);
+        lookImg = findViewById(R.id.register_img_look);
         usernameEt = findViewById(R.id.et_register_username);
         pwdEt = findViewById(R.id.et_register_pwd);
-
+        lookImg2 = findViewById(R.id.register_img_look_again);
+        pwdEt2 = findViewById(R.id.et_register_pwd_again);
         nameEt = findViewById(R.id.et_register_name);
         phoneEt = findViewById(R.id.et_register_phone);
         driverLicenseEt = findViewById(R.id.et_register_driver_license);
@@ -77,6 +83,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     lookImg.setImageDrawable(getResources().getDrawable(R.mipmap.no_look));
                 }
                 pwdEt.setSelection(pwdEt.getText().toString().length());
+            }
+        });
+
+        lookImg2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLook2) {
+                    isLook2 = false;
+                    //隐藏密码
+                    pwdEt2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    lookImg2.setImageDrawable(getResources().getDrawable(R.mipmap.look));
+                } else {
+                    isLook2 = true;
+                    //显示密码
+                    pwdEt2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    lookImg2.setImageDrawable(getResources().getDrawable(R.mipmap.no_look));
+                }
+                pwdEt2.setSelection(pwdEt2.getText().toString().length());
             }
         });
     }
@@ -100,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_to_register:
+            case R.id.tv_register:
                 final String userName = usernameEt.getText().toString().trim();
                 if (TextUtils.isEmpty(userName)) {
                     showMsg("请输入用户名");
@@ -109,6 +133,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String pwd = pwdEt.getText().toString().trim();
                 if (TextUtils.isEmpty(pwd)) {
                     showMsg("请输入密码");
+                    return;
+                }
+
+                String pwd2 = pwdEt2.getText().toString().trim();
+                if (TextUtils.isEmpty(pwd2)) {
+                    showMsg("请再次输入密码");
+                    return;
+                }
+
+                if (!pwd.equals(pwd2)) {
+                    showMsg("两次输入的密码不一致");
                     return;
                 }
 
@@ -138,17 +173,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void success(Call call, Response response) throws IOException {
                         String result = response.body().string();
-                        BaseBean bean = new Gson().fromJson(result, BaseBean.class);
-                        if (bean.getStatus() == 0) {
+                        Type type = new TypeToken<ResultDTO<LoginResult>>() {
+                        }.getType();
+                        ResultDTO<LoginResult> resultDTO = new Gson().fromJson(result, type);
+                        if (resultDTO.getStatus() == 0) {
+                            LoginResult loginResult = resultDTO.getResult();
                             showMsg("注册成功");
                             //保存token
-                            SharedPreferencesUtil.saveStringValue(RegisterActivity.this, "token", bean.getResult());
+                            SharedPreferencesUtil.saveStringValue(RegisterActivity.this, "token", loginResult.getToken());
+                            SharedPreferencesUtil.saveLongValue(RegisterActivity.this, "userId", loginResult.getUserId());
                             SharedPreferencesUtil.saveStringValue(RegisterActivity.this, "username", userName);
                             finish();
                         } else {
                             SharedPreferencesUtil.saveStringValue(RegisterActivity.this, "token", "");
                             SharedPreferencesUtil.saveStringValue(RegisterActivity.this, "username", "");
-                            showMsg(bean.getMessage());
+                            showMsg(resultDTO.getMessage());
                         }
                     }
 

@@ -42,9 +42,7 @@ public class AccidentAdapter extends ArrayAdapter<Accident> {
 
         if (accident != null) {
             place.setText(accident.getAddress());
-            Date date = accident.getTime();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            time.setText(format.format(date));
+            time.setText(accident.getTime());
             detail.setText("详情： " + accident.getDescription());
         }
         return view;
