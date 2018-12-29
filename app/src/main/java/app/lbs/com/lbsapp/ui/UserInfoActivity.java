@@ -24,7 +24,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class PersonalInfoActivity extends AppCompatActivity {
+public class UserInfoActivity extends AppCompatActivity {
 
     TextView username;
     TextView name;
@@ -57,7 +57,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
 
 
     private void getUserInfo() {
-        Long userId = SharedPreferencesUtil.getLongValue(PersonalInfoActivity.this, "userId");
+        Long userId = SharedPreferencesUtil.getLongValue(UserInfoActivity.this, "userId");
         final Request request = new Request.Builder()
                 .url(HttpConstant.USER_INFO + "?userId=" + userId).build();
 
@@ -92,7 +92,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
     }
 
     private void getCarInfo() {
-        Long userId = SharedPreferencesUtil.getLongValue(PersonalInfoActivity.this, "userId");
+        Long userId = SharedPreferencesUtil.getLongValue(UserInfoActivity.this, "userId");
         final Request request = new Request.Builder()
                 .url(HttpConstant.CAR_INFO + "?userId=" + userId).build();
         OkHttpClient client = new OkHttpClient();

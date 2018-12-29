@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void goInfoPage() {
-        Intent intent = new Intent(this, PersonalInfoActivity.class);
+        Intent intent = new Intent(this, UserInfoActivity.class);
         startActivity(intent);
     }
 
