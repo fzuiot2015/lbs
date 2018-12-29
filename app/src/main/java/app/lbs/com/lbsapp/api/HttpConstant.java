@@ -14,7 +14,7 @@ public interface HttpConstant {
     String INSURANCE_INFO = HOST + "personal/insurance";
     String LIMIT_CITY = HOST + "limit/city";
     String LIMIT = HOST + "limit";
-    String PLACE_NAME = HOST + "place/name";
+    String ACCIDENT = HOST + "accident";
 
     String HOSPITAL_PHONE = "15060123639";
 }

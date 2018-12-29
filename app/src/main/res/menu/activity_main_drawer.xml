@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_anquan"
             android:icon="@mipmap/icon_jiaoguan"
-            android:title="安全" />
+            android:title="一键求助" />
         <item
             android:id="@+id/nav_personal_info"
             android:icon="@mipmap/icon_youjia"

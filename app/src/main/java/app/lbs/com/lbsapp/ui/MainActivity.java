@@ -163,13 +163,23 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void goAccidentPage() {
-        Intent intent = new Intent(this, AccidentActivity.class);
-        startActivity(intent);
+        String token = SharedPreferencesUtil.getStringValue(MainActivity.this, "token");
+        if ("".equals(token)) {
+            goLoginPage();
+        } else {
+            Intent intent = new Intent(this, AccidentActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void goInsurancePage() {
-        Intent intent = new Intent(this, InsuranceActivity.class);
-        startActivity(intent);
+        String token = SharedPreferencesUtil.getStringValue(MainActivity.this, "token");
+        if ("".equals(token)) {
+            goLoginPage();
+        } else {
+            Intent intent = new Intent(this, InsuranceActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void goSafePage() {
@@ -193,8 +203,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void goInfoPage() {
-        Intent intent = new Intent(this, UserInfoActivity.class);
-        startActivity(intent);
+        String token = SharedPreferencesUtil.getStringValue(MainActivity.this, "token");
+        if ("".equals(token)) {
+            goLoginPage();
+        } else {
+            Intent intent = new Intent(this, UserInfoActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void goLoginPage() {

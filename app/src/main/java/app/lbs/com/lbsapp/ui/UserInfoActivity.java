@@ -39,7 +39,7 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_info);
+        setContentView(R.layout.activity_user_info);
 
         username = findViewById(R.id.info_username);
         name = findViewById(R.id.info_name);
@@ -54,7 +54,6 @@ public class UserInfoActivity extends AppCompatActivity {
         getUserInfo();
         getCarInfo();
     }
-
 
     private void getUserInfo() {
         Long userId = SharedPreferencesUtil.getLongValue(UserInfoActivity.this, "userId");

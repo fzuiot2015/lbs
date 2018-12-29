@@ -27,7 +27,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class InsuranceActivity extends AppCompatActivity {
-
     private InsuranceAdapter insuranceAdapter;
     private List<Insurance> insuranceList = new ArrayList<>();
     private ListView listView;
@@ -39,10 +38,10 @@ public class InsuranceActivity extends AppCompatActivity {
         insuranceAdapter = new InsuranceAdapter(this, R.layout.item_insurance, insuranceList);
         listView = findViewById(R.id.list_insurance);
         listView.setAdapter(insuranceAdapter);
-        getInsurance();
+        getData();
     }
 
-    public void getInsurance() {
+    public void getData() {
         Long userId = SharedPreferencesUtil.getLongValue(InsuranceActivity.this, "userId");
         final Request request = new Request.Builder()
                 .url(HttpConstant.INSURANCE_INFO + "?userId=" + userId).build();
@@ -58,7 +57,7 @@ public class InsuranceActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String json = response.body().string();
-                Log.e("json", "json: "+json );
+                Log.e("json", "json: " + json);
                 Gson gson = new Gson();
                 Type type = new TypeToken<ResultDTO<List<Insurance>>>() {
                 }.getType();
