@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         nameTv = headerView.findViewById(R.id.tv_name);
         //获取Menu的控件
         Menu menuView = navigationView.getMenu();
-        menuItem = menuView.getItem(4);
+        menuItem = menuView.getItem(7);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -152,6 +152,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_xianxing:
                 goLimitPage();
                 break;
+            case R.id.nav_personal_info:
+                goInfoPage();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -189,12 +192,18 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    private void goInfoPage() {
+        Intent intent = new Intent(this, PersonalInfoActivity.class);
+        startActivity(intent);
+    }
+
     private void goLoginPage() {
         SharedPreferencesUtil.saveStringValue(this, "token", "");
         SharedPreferencesUtil.saveStringValue(this, "username", "");
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
 
     @Override
     protected void onResume() {

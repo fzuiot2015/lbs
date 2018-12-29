@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,15 +15,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.api.HttpConstant;
 import app.lbs.com.lbsapp.api.NetUtils;
-import app.lbs.com.lbsapp.bean.BaseBean;
+import app.lbs.com.lbsapp.bean.LoginResult;
+import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -117,18 +121,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 NetUtils.getInstance().postDataAsynToNet(HttpConstant.LOGIN, params, new NetUtils.MyNetCall() {
                     @Override
                     public void success(Call call, Response response) throws IOException {
-                        String result = response.body().string();
-                        BaseBean bean = new Gson().fromJson(result, BaseBean.class);
-                        if (bean.getStatus() == 0) {
+                        String json = response.body().string();
+                        Log.e("json", "json: "+json);
+                        Type type = new TypeToken<ResultDTO<LoginResult>>() {
+                        }.getType();
+                        ResultDTO<LoginResult> resultDTO = new Gson().fromJson(json, type);
+                        if (resultDTO.getStatus() == 0) {
                             showMsg("登录成功");
+                            LoginResult loginResult = resultDTO.getResult();
                             //保存token
-                            SharedPreferencesUtil.saveStringValue(LoginActivity.this, "token", bean.getResult());
+                            SharedPreferencesUtil.saveStringValue(LoginActivity.this, "token", loginResult.getToken());
+                            SharedPreferencesUtil.saveLongValue(LoginActivity.this, "userId", loginResult.getUserId());
                             SharedPreferencesUtil.saveStringValue(LoginActivity.this, "username", userName);
                             finish();
                         } else {
                             SharedPreferencesUtil.saveStringValue(LoginActivity.this, "token", "");
                             SharedPreferencesUtil.saveStringValue(LoginActivity.this, "username", "");
-                            showMsg(bean.getMessage());
+                            showMsg(resultDTO.getMessage());
                         }
                     }
 

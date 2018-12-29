@@ -101,6 +101,10 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
     private void initView() {
         InquireTv = findViewById(R.id.tv_inquire);
         InquireTv.setOnClickListener(this);
+        price_dieselOil0 = findViewById(R.id.price_dieselOil0);
+        price_gasoline90 = findViewById(R.id.price_gasoline90);
+        price_gasoline93 = findViewById(R.id.price_gasoline93);
+        price_gasoline97 = findViewById(R.id.price_gasoline97);
     }
 
 
