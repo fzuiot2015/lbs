@@ -9,15 +9,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.bean.Accident;
 
+/**
+ * 事故记录适配器
+ */
 public class AccidentAdapter extends ArrayAdapter<Accident> {
 
+    /**
+     * 布局文件id
+     */
     private int resourceId;
 
     public AccidentAdapter(@NonNull Context context, int resource, List<Accident> objects) {

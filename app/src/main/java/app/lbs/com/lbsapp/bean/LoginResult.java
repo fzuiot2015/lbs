@@ -1,12 +1,19 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 用户登录反馈
+ */
 public class LoginResult {
-    Long userId;
-    String token;
+    /**
+     * 用户id
+     */
+    private Long userId;
 
-    public Long getUserId() {
-        return userId;
-    }
+    /**
+     * token令牌
+     */
+    private String token;
+
 
     public void setUserId(Long userId) {
         this.userId = userId;

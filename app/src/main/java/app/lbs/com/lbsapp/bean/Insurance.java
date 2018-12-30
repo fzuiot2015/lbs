@@ -1,12 +1,39 @@
 package app.lbs.com.lbsapp.bean;
 
 public class Insurance {
+    /**
+     * 保险记录id
+     */
     private Long id;
+
+    /**
+     * 用户ID
+     */
     private Long userId;
+
+    /**
+     * 保险公司
+     */
     private String insurer;
+
+    /**
+     * 保单号
+     */
     private String policyId;
+
+    /**
+     * 保险电话
+     */
     private String insurancePhone;
+
+    /**
+     * 开始时间
+     */
     private String startTime;
+
+    /**
+     * 结束时间
+     */
     private String endTime;
 
     public Long getId() {

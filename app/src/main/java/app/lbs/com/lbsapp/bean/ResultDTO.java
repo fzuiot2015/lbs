@@ -1,12 +1,35 @@
 package app.lbs.com.lbsapp.bean;
 
 public class ResultDTO<T> {
+    /**
+     * 状态码
+     */
     private int status;
+
+    /**
+     * 状态信息
+     */
     private String message;
+
+    /**
+     * 返回内容
+     */
     private T result;
-    private String pageNum;
-    private String totalPages;
-    private String total;
+
+    /**
+     * 当前分页页码(首页页码为0)
+     */
+    private Integer pageNum;
+
+    /**
+     * 分页总页数
+     */
+    private Integer totalPages;
+
+    /**
+     * 项目总数
+     */
+    private Long total;
 
     public int getStatus() {
         return status;
@@ -32,27 +55,27 @@ public class ResultDTO<T> {
         this.result = result;
     }
 
-    public String getPageNum() {
+    public Integer getPageNum() {
         return pageNum;
     }
 
-    public void setPageNum(String pageNum) {
+    public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
     }
 
-    public String getTotalPages() {
+    public Integer getTotalPages() {
         return totalPages;
     }
 
-    public void setTotalPages(String totalPages) {
+    public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
     }
 
-    public String getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 }

@@ -14,8 +14,14 @@ import java.util.List;
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.bean.Insurance;
 
+/**
+ * 保险记录适配器
+ */
 public class InsuranceAdapter extends ArrayAdapter<Insurance> {
 
+    /**
+     * 布局文件id
+     */
     private int resourceId;
 
     public InsuranceAdapter(@NonNull Context context, int resource, List<Insurance> objects) {

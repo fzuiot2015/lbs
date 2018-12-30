@@ -1,11 +1,37 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 用户信息
+ */
 public class User {
+    /**
+     * 用户id
+     */
     private Long id;
+
+    /**
+     * 账号
+     */
     private String username;
+
+    /**
+     * 密码
+     */
     private String password;
+
+    /**
+     * 姓名
+     */
     private String name;
+
+    /**
+     * 手机号
+     */
     private String phone;
+
+    /**
+     * 驾驶证号
+     */
     private String driverLicense;
 
     public Long getId() {

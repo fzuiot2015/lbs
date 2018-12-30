@@ -1,12 +1,39 @@
 package app.lbs.com.lbsapp.bean;
 
 public class Accident {
+    /**
+     * 事故ID
+     */
     private Long id;
+
+    /**
+     * 用户ID
+     */
     private Long userId;
+
+    /**
+     * 时间
+     */
     private String time;
+
+    /**
+     * 纬度值
+     */
     private Float lat;
+
+    /**
+     * 经度值
+     */
     private Float lng;
+
+    /**
+     * 地点
+     */
     private String address;
+
+    /**
+     * 详情描述
+     */
     private String description;
 
     public Long getId() {

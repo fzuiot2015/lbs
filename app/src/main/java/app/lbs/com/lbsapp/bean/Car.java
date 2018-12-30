@@ -1,12 +1,39 @@
 package app.lbs.com.lbsapp.bean;
 
 public class Car {
+    /**
+     * 车辆id
+     */
     private Long id;
+
+    /**
+     * 车主用户ID
+     */
     private Long userId;
+
+    /**
+     * VIN码
+     */
     private String vin;
+
+    /**
+     * 车牌号
+     */
     private String plate;
+
+    /**
+     * 车辆类型
+     */
     private String vehicleType;
+
+    /**
+     * 发动机号
+     */
     private String engine;
+
+    /**
+     * 车型
+     */
     private String model;
 
     public Long getId() {

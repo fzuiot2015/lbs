@@ -4,15 +4,35 @@ package app.lbs.com.lbsapp.bean;
  * 油价数据POJO
  */
 public class OilPrice {
+    /**
+     * 油价信息id
+     */
     private Long id;
-    private String province;    //省份
-    private Float dieselOil0;        //0号柴油价格
 
-    private Float gasoline90;       //90号汽油价格
+    /**
+     * 省份
+     */
+    private String province;
 
-    private Float gasoline93;       //93号汽油价格
+    /**
+     * 0号柴油价格
+     */
+    private Float dieselOil0;
 
-    private Float gasoline97;       //97号汽油价格
+    /**
+     * 90号汽油价格
+     */
+    private Float gasoline90;
+
+    /**
+     * 93号汽油价格
+     */
+    private Float gasoline93;
+
+    /**
+     * 97号汽油价格
+     */
+    private Float gasoline97;
 
     public Long getId() {
         return id;

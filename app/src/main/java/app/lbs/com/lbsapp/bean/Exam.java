@@ -1,16 +1,59 @@
 package app.lbs.com.lbsapp.bean;
 
 public class Exam {
+    /**
+     * 驾照考题id
+     */
     private Long id;
+
+    /**
+     * 科目类别
+     */
     private String subject;
+
+    /**
+     * 驾驶证类型
+     */
     private String type;
+
+    /**
+     * 题目
+     */
     private String question;
+
+    /**
+     * 选项1
+     */
     private String item1;
+
+    /**
+     * 选项2
+     */
     private String item2;
+
+    /**
+     * 选项3
+     */
     private String item3;
+
+    /**
+     * 选项4
+     */
     private String item4;
+
+    /**
+     * 答案
+     */
     private String answer;
+
+    /**
+     * 拓展知识
+     */
     private String explains;
+
+    /**
+     * 图片url
+     */
     private String url;
 
     public Long getId() {
