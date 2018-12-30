@@ -14,6 +14,9 @@ public class LoginResult {
      */
     private String token;
 
+    public Long getUserId() {
+        return userId;
+    }
 
     public void setUserId(Long userId) {
         this.userId = userId;

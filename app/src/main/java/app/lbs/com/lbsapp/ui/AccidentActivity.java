@@ -42,8 +42,8 @@ public class AccidentActivity extends AppCompatActivity {
 
     public void getData() {
         Long userId = SharedPreferencesUtil.getLongValue(AccidentActivity.this, "userId");
-
-        NetUtils.getInstance().getDataAsynFromNet(Constant.ACCIDENT + "?userId=" + userId, new Callback() {
+        String url = Constant.ACCIDENT + "?userId=" + userId;
+        NetUtils.getInstance().getDataAsynFromNet(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

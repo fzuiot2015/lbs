@@ -42,7 +42,7 @@ public class InsuranceActivity extends AppCompatActivity {
 
     public void getData() {
         Long userId = SharedPreferencesUtil.getLongValue(InsuranceActivity.this, "userId");
-        String url = Constant.INSURANCE_INFO + "?userId=" + userId + "?subject=1&type=c1";
+        String url = Constant.INSURANCE_INFO + "?userId=" + userId;
         NetUtils.getInstance().getDataAsynFromNet(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
