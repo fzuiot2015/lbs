@@ -3,10 +3,6 @@ package app.lbs.com.lbsapp.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * @auther: wxn
- * @since: 13-4-8 下午3:36
- */
 public class SharedPreferencesUtil {
 	
 	private static String FILE_NAME = "SharedPreferences";
@@ -55,7 +51,7 @@ public class SharedPreferencesUtil {
         }
         return 0;
     }
-    
+
     public static void saveLongValue(Context ctx, String key, long value){
     	saveValue(ctx, key, value);
     }

@@ -111,7 +111,7 @@ public class UserInfoActivity extends AppCompatActivity {
                 }.getType();
                 ResultDTO<List<Car>> resultDTO = gson.fromJson(json, type);
                 List<Car> carList = resultDTO.getResult();
-                if (carList == null) {
+                if (carList == null || carList.size() == 0) {
                     return;
                 }
 

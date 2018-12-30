@@ -165,7 +165,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                 Map<String, String> params = new HashMap<>();
                 params.put("username", userName);
-                params.put("pass", pwd);
+                params.put("password", pwd);
                 params.put("name", name);
                 params.put("phone", phone);
                 params.put("driverLicense", driverLicense);
