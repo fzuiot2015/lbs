@@ -16,14 +16,13 @@ import java.util.List;
 
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.adapter.InsuranceAdapter;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
+import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.Insurance;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 public class InsuranceActivity extends AppCompatActivity {
@@ -43,15 +42,10 @@ public class InsuranceActivity extends AppCompatActivity {
 
     public void getData() {
         Long userId = SharedPreferencesUtil.getLongValue(InsuranceActivity.this, "userId");
-        final Request request = new Request.Builder()
-                .url(HttpConstant.INSURANCE_INFO + "?userId=" + userId).build();
-
-        OkHttpClient client = new OkHttpClient();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
+        String url = Constant.INSURANCE_INFO + "?userId=" + userId + "?subject=1&type=c1";
+        NetUtils.getInstance().getDataAsynFromNet(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
             }
 
             @Override

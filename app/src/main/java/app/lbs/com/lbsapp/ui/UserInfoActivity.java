@@ -13,7 +13,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.bean.Car;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.bean.User;
@@ -58,7 +58,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void getUserInfo() {
         Long userId = SharedPreferencesUtil.getLongValue(UserInfoActivity.this, "userId");
         final Request request = new Request.Builder()
-                .url(HttpConstant.USER_INFO + "?userId=" + userId).build();
+                .url(Constant.USER_INFO + "?userId=" + userId).build();
 
         OkHttpClient client = new OkHttpClient();
         Call call = client.newCall(request);
@@ -93,7 +93,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void getCarInfo() {
         Long userId = SharedPreferencesUtil.getLongValue(UserInfoActivity.this, "userId");
         final Request request = new Request.Builder()
-                .url(HttpConstant.CAR_INFO + "?userId=" + userId).build();
+                .url(Constant.CAR_INFO + "?userId=" + userId).build();
         OkHttpClient client = new OkHttpClient();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {

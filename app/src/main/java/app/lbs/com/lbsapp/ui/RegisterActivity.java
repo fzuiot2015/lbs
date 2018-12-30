@@ -21,12 +21,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.LoginResult;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -169,9 +170,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 params.put("name", name);
                 params.put("phone", phone);
                 params.put("driverLicense", driverLicense);
-                NetUtils.getInstance().postDataAsynToNet(HttpConstant.REGISTER, params, new NetUtils.MyNetCall() {
+                NetUtils.getInstance().postDataAsynToNet(Constant.REGISTER, params, new Callback() {
                     @Override
-                    public void success(Call call, Response response) throws IOException {
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
                         String result = response.body().string();
                         Type type = new TypeToken<ResultDTO<LoginResult>>() {
                         }.getType();
@@ -189,10 +195,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             SharedPreferencesUtil.saveStringValue(RegisterActivity.this, "username", "");
                             showMsg(resultDTO.getMessage());
                         }
-                    }
-
-                    @Override
-                    public void failed(Call call, IOException e) {
                     }
                 });
                 break;

@@ -16,14 +16,13 @@ import java.util.List;
 
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.adapter.AccidentAdapter;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
+import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.Accident;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 public class AccidentActivity extends AppCompatActivity {
@@ -43,12 +42,8 @@ public class AccidentActivity extends AppCompatActivity {
 
     public void getData() {
         Long userId = SharedPreferencesUtil.getLongValue(AccidentActivity.this, "userId");
-        final Request request = new Request.Builder()
-                .url(HttpConstant.ACCIDENT + "?userId=" + userId).build();
 
-        OkHttpClient client = new OkHttpClient();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
+        NetUtils.getInstance().getDataAsynFromNet(Constant.ACCIDENT + "?userId=" + userId, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

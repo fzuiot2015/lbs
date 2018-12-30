@@ -18,11 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.OilPrice;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 
@@ -31,10 +32,10 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
     private List<String> data_list;
     private ArrayAdapter<String> arr_adapter;
     private TextView InquireTv;
-    private TextView price_dieselOil0;
-    private TextView price_gasoline90;
-    private TextView price_gasoline93;
-    private TextView price_gasoline97;
+    private TextView priceDieselOil0;
+    private TextView priceGasoline90;
+    private TextView priceGasoline93;
+    private TextView priceGasoline97;
     private String province;
 
 
@@ -71,9 +72,13 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
 
     //请求省份接口
     private void httpGetProvince() {
-        NetUtils.getInstance().getDataAsynFromNet(HttpConstant.OIL_PROVINCE, new NetUtils.MyNetCall() {
+        NetUtils.getInstance().getDataAsynFromNet(Constant.OIL_PROVINCE, new Callback() {
             @Override
-            public void success(Call call, Response response) throws IOException {
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
                 Log.e("json", json);//打印
                 Type type = new TypeToken<ResultDTO<List<String>>>() {
@@ -87,24 +92,17 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
                         arr_adapter.notifyDataSetChanged();
                     }
                 });
-
             }
-
-            @Override
-            public void failed(Call call, IOException e) {
-
-            }
-
         });
     }
 
     private void initView() {
         InquireTv = findViewById(R.id.tv_inquire);
         InquireTv.setOnClickListener(this);
-        price_dieselOil0 = findViewById(R.id.price_dieselOil0);
-        price_gasoline90 = findViewById(R.id.price_gasoline90);
-        price_gasoline93 = findViewById(R.id.price_gasoline93);
-        price_gasoline97 = findViewById(R.id.price_gasoline97);
+        priceDieselOil0 = findViewById(R.id.price_dieselOil0);
+        priceGasoline90 = findViewById(R.id.price_gasoline90);
+        priceGasoline93 = findViewById(R.id.price_gasoline93);
+        priceGasoline97 = findViewById(R.id.price_gasoline97);
     }
 
     @Override
@@ -119,9 +117,13 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
 
     private void httpGetOilPrice() {
         //get请求，请求参数，发送你请求的省份给服务器
-        NetUtils.getInstance().getDataAsynFromNet(HttpConstant.INQUIRE + "?province=" + province, new NetUtils.MyNetCall() {
+        NetUtils.getInstance().getDataAsynFromNet(Constant.INQUIRE + "?province=" + province, new Callback() {
             @Override
-            public void success(Call call, Response response) throws IOException {
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
                 Log.e("json", "json:" + json);//打印
                 Type type = new TypeToken<ResultDTO<OilPrice>>() {
@@ -135,20 +137,13 @@ public class GasActivity extends AppCompatActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        price_dieselOil0.setText(String.valueOf(dieselOil0 + "(元/升)"));
-                        price_gasoline90.setText(String.valueOf(gasoline90 + "(元/升)"));
-                        price_gasoline93.setText(String.valueOf(gasoline93 + "(元/升)"));
-                        price_gasoline97.setText(String.valueOf(gasoline97 + "(元/升)"));
+                        priceDieselOil0.setText(String.valueOf(dieselOil0 + "(元/升)"));
+                        priceGasoline90.setText(String.valueOf(gasoline90 + "(元/升)"));
+                        priceGasoline93.setText(String.valueOf(gasoline93 + "(元/升)"));
+                        priceGasoline97.setText(String.valueOf(gasoline97 + "(元/升)"));
                     }
                 });
-
             }
-
-            @Override
-            public void failed(Call call, IOException e) {
-
-            }
-
         });
     }
 

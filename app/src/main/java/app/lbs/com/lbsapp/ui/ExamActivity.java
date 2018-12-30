@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.View;
@@ -20,11 +21,12 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.Exam;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class ExamActivity extends AppCompatActivity implements View.OnClickListener {
@@ -97,10 +99,13 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void httpGetQuestion() {
-        NetUtils.getInstance().getDataAsynFromNet(HttpConstant.Exam + "?subject=1&type=c1", new NetUtils.MyNetCall() {
+        NetUtils.getInstance().getDataAsynFromNet(Constant.Exam + "?subject=1&type=c1", new Callback() {
             @Override
-            public void success(Call call, Response response) throws IOException {
+            public void onFailure(Call call, IOException e) {
+            }
 
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 final String result = response.body().string();
                 Gson gson = new Gson();
                 Type type = new TypeToken<ResultDTO<Exam>>() {
@@ -124,11 +129,6 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
             }
-
-            @Override
-            public void failed(Call call, IOException e) {
-
-            }
         });
     }
 
@@ -144,9 +144,13 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        NetUtils.getInstance().getDataAsynFromNet(url, new NetUtils.MyNetCall() {
+        NetUtils.getInstance().getDataAsynFromNet(url, new Callback() {
             @Override
-            public void success(Call call, Response response) throws IOException {
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
                 byte[] bytes = response.body().bytes();
                 final Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 runOnUiThread(new Runnable() {
@@ -155,11 +159,6 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                         imageView.setImageBitmap(bitmap);
                     }
                 });
-            }
-
-            @Override
-            public void failed(Call call, IOException e) {
-
             }
         });
     }

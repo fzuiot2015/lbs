@@ -15,7 +15,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 
 public class SafeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,7 +31,6 @@ public class SafeActivity extends AppCompatActivity implements View.OnClickListe
         button = findViewById(R.id.safe_btn);
         button.setOnClickListener(this);
 
-
         username = SharedPreferencesUtil.getStringValue(SafeActivity.this, "username");
 
         LocationClientOption option = new LocationClientOption();
@@ -44,7 +43,8 @@ public class SafeActivity extends AppCompatActivity implements View.OnClickListe
                 String address = bdLocation.getAddrStr();
                 Log.e("address", "address: " + address);
                 String msg = "用户【" + username + "】向你发出求助\n位置：" + address;
-                SmsManager.getDefault().sendTextMessage(HttpConstant.HOSPITAL_PHONE, null, msg, null, null);
+                SmsManager.getDefault()
+                        .sendTextMessage(Constant.HOSPITAL_PHONE, null, msg, null, null);
             }
         });
     }
@@ -68,9 +68,12 @@ public class SafeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    /**
+     * 拨打求助电话
+     */
     private void callPhone() {
         Intent intent = new Intent(Intent.ACTION_CALL);
-        Uri uri = Uri.parse("tel:" + HttpConstant.HOSPITAL_PHONE);
+        Uri uri = Uri.parse("tel:" + Constant.HOSPITAL_PHONE);
         intent.setData(uri);
         startActivity(intent);
     }

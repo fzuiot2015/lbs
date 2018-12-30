@@ -19,11 +19,12 @@ import java.util.List;
 import java.util.Map;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.Limit;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class LimitActivity extends AppCompatActivity implements View.OnClickListener {
@@ -74,9 +75,14 @@ public class LimitActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void httpGetCity() {
-        NetUtils.getInstance().getDataAsynFromNet(HttpConstant.LIMIT_CITY, new NetUtils.MyNetCall() {
+        NetUtils.getInstance().getDataAsynFromNet(Constant.LIMIT_CITY, new Callback() {
             @Override
-            public void success(Call call, Response response) throws IOException {
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
                 Log.e("json", json);//打印
                 Type type = new TypeToken<ResultDTO<Map<String, String>>>() {
@@ -94,10 +100,6 @@ public class LimitActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
             }
-
-            @Override
-            public void failed(Call call, IOException e) {
-            }
         });
     }
 
@@ -112,9 +114,14 @@ public class LimitActivity extends AppCompatActivity implements View.OnClickList
 
     private void httpGetLimit() {
         //get请求，请求参数，发送你请求的省份给服务器
-        NetUtils.getInstance().getDataAsynFromNet(HttpConstant.LIMIT + "?city=" + city, new NetUtils.MyNetCall() {
+        NetUtils.getInstance().getDataAsynFromNet(Constant.LIMIT + "?city=" + city, new Callback() {
             @Override
-            public void success(Call call, Response response) throws IOException {
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
                 Log.e("json", "json:" + json);//打印
                 Type type = new TypeToken<ResultDTO<Limit>>() {
@@ -132,12 +139,6 @@ public class LimitActivity extends AppCompatActivity implements View.OnClickList
                 });
 
             }
-
-            @Override
-            public void failed(Call call, IOException e) {
-
-            }
-
         });
     }
 

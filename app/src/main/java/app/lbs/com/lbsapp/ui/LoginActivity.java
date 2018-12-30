@@ -23,12 +23,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.lbs.com.lbsapp.R;
-import app.lbs.com.lbsapp.api.HttpConstant;
+import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.api.NetUtils;
 import app.lbs.com.lbsapp.bean.LoginResult;
 import app.lbs.com.lbsapp.bean.ResultDTO;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -118,11 +119,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 params.put("username", userName);
                 params.put("pass", pwd);
                 //发起登录http请求
-                NetUtils.getInstance().postDataAsynToNet(HttpConstant.LOGIN, params, new NetUtils.MyNetCall() {
+                NetUtils.getInstance().postDataAsynToNet(Constant.LOGIN, params, new Callback() {
                     @Override
-                    public void success(Call call, Response response) throws IOException {
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
                         String json = response.body().string();
-                        Log.e("json", "json: "+json);
+                        Log.e("json", "json: " + json);
                         Type type = new TypeToken<ResultDTO<LoginResult>>() {
                         }.getType();
                         ResultDTO<LoginResult> resultDTO = new Gson().fromJson(json, type);
@@ -139,11 +145,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             SharedPreferencesUtil.saveStringValue(LoginActivity.this, "username", "");
                             showMsg(resultDTO.getMessage());
                         }
-                    }
-
-                    @Override
-                    public void failed(Call call, IOException e) {
-
                     }
                 });
                 break;
