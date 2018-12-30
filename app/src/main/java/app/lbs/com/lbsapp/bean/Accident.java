@@ -1,5 +1,8 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 事故记录
+ */
 public class Accident {
     /**
      * 事故ID

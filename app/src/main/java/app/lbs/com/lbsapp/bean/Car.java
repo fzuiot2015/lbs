@@ -1,5 +1,8 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 车辆信息
+ */
 public class Car {
     /**
      * 车辆id

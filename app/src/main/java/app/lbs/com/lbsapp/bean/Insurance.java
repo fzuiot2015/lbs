@@ -1,5 +1,8 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 保险记录
+ */
 public class Insurance {
     /**
      * 保险记录id

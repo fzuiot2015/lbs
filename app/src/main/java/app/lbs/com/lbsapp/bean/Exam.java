@@ -1,5 +1,8 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 驾照考题
+ */
 public class Exam {
     /**
      * 驾照考题id

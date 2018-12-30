@@ -1,7 +1,7 @@
 package app.lbs.com.lbsapp.bean;
 
 /**
- * 油价数据POJO
+ * 油价信息
  */
 public class OilPrice {
     /**

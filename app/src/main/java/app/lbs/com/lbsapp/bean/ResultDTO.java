@@ -1,5 +1,8 @@
 package app.lbs.com.lbsapp.bean;
 
+/**
+ * 反馈结果类，用于用于封装HTTP请求的反馈结果信息
+ */
 public class ResultDTO<T> {
     /**
      * 状态码

@@ -2,6 +2,9 @@ package app.lbs.com.lbsapp.bean;
 
 import java.util.List;
 
+/**
+ * 尾号限行信息
+ */
 public class Limit {
     /**
      * 城市代号（城市名称拼音）
