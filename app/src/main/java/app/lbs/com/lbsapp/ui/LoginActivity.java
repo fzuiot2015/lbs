@@ -32,8 +32,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * 用户登录界面
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
     private TextView titleTv;
     private TextView loginTv;
     private TextView registerTv;

@@ -18,8 +18,10 @@ import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.api.Constant;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 
+/**
+ * 一键求助界面
+ */
 public class SafeActivity extends AppCompatActivity implements View.OnClickListener {
-
     private Button button;
     private LocationClient locationClient;
     private String username;

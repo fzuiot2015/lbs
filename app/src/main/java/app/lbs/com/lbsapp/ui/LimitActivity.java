@@ -27,8 +27,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * 尾号限行界面
+ */
 public class LimitActivity extends AppCompatActivity implements View.OnClickListener {
-
     private List<String> cityList;
     private List<String> cityNameList;
     private ArrayAdapter<String> arrayAdapter;

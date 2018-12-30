@@ -30,6 +30,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * 用户注册界面
+ */
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView titleTv;
     private TextView registerTv;

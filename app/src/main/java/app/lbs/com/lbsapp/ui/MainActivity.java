@@ -21,9 +21,11 @@ import java.lang.reflect.Method;
 import app.lbs.com.lbsapp.R;
 import app.lbs.com.lbsapp.utils.SharedPreferencesUtil;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     private ImageView headerImg;
     private TextView nameTv;
     private TextView titleTv;

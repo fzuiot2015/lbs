@@ -25,6 +25,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * 事故记录界面
+ */
 public class AccidentActivity extends AppCompatActivity {
     private AccidentAdapter accidentAdapter;
     private List<Accident> accidentList = new ArrayList<>();

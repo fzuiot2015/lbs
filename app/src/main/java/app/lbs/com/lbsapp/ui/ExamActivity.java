@@ -29,6 +29,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * 驾照考题界面
+ */
 public class ExamActivity extends AppCompatActivity implements View.OnClickListener {
     private Exam exam;
     private ImageView imageView;

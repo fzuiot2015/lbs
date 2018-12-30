@@ -8,7 +8,6 @@ public interface Constant {
      * 后端服务器地址
      */
     String HOST = "http://47.101.34.9:8081/";
-//    String HOST = "http://192.168.1.5:8081/";
 
     String LOGIN = HOST + "user/login";
     String REGISTER = HOST + "user/register";

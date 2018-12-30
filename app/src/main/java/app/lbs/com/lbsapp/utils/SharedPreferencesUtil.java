@@ -3,6 +3,9 @@ package app.lbs.com.lbsapp.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * 数据持久化工具类
+ */
 public class SharedPreferencesUtil {
 
     private static String FILE_NAME = "SharedPreferences";
@@ -95,8 +98,9 @@ public class SharedPreferencesUtil {
 
     /**
      * 获取本地数据
-     * @param ctx Context对象
-     * @param key 键对象
+     *
+     * @param ctx          Context对象
+     * @param key          键对象
      * @param defaultValue 默认值
      * @return 值对象
      */

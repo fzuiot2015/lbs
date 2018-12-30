@@ -24,8 +24,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * 用户信息界面
+ */
 public class UserInfoActivity extends AppCompatActivity {
-
     TextView username;
     TextView name;
     TextView phone;

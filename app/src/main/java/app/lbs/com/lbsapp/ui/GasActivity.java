@@ -27,6 +27,9 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 
+/**
+ * 油价查询界面
+ */
 public class GasActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner spinner;
     private List<String> data_list;
