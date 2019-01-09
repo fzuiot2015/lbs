@@ -101,6 +101,9 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * 通过HTTP请求获取数据并更新界面
+     */
     private void httpGetQuestion() {
         NetUtils.getInstance().getDataAsynFromNet(Constant.Exam + "?subject=1&type=c1", new Callback() {
             @Override
@@ -135,6 +138,11 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * 显示图片
+     *
+     * @param url 图片地址
+     */
     private void setImg(String url) {
         runOnUiThread(new Runnable() {
             @Override
@@ -166,6 +174,12 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * 设置多选按钮
+     *
+     * @param text  选项文章
+     * @param index 索引
+     */
     private void setRadio(String text, int index) {
         if (text == null || "".equals(text)) {
             return;
@@ -177,6 +191,12 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         radioGroup.addView(radio, index);
     }
 
+    /**
+     * 根据索引获取对应的字母前缀
+     *
+     * @param index 索引
+     * @return 对应的
+     */
     private char getIndexPrefix(int index) {
         switch (index) {
             case 0:

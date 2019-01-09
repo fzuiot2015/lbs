@@ -43,6 +43,9 @@ public class AccidentActivity extends AppCompatActivity {
         getData();
     }
 
+    /**
+     * 通过HTTP请求获取数据并更新界面
+     */
     public void getData() {
         Long userId = SharedPreferencesUtil.getLongValue(AccidentActivity.this, "userId");
         String url = Constant.ACCIDENT + "?userId=" + userId;

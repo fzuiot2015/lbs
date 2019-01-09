@@ -10,27 +10,6 @@ public class SharedPreferencesUtil {
 
     private static String FILE_NAME = "SharedPreferences";
 
-    public static void saveBooleanValue(Context ctx, String key, boolean value) {
-        saveValue(ctx, key, value);
-    }
-
-    public static Boolean getBooleanValue(Context ctx, String key) {
-        return getBooleanValue(ctx, key, false);
-    }
-
-    public static Boolean getBooleanValue(Context ctx, String key, boolean defaultValue) {
-        Object value = getValue(ctx, key, defaultValue);
-        if (value != null && (value instanceof Boolean)) {
-            return (Boolean) value;
-        }
-        return defaultValue;
-    }
-
-    public static boolean isExistKey(Context ctx, String key) {
-        SharedPreferences sharedPreferences = ctx.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.contains(key);
-    }
-
     public static void saveStringValue(Context ctx, String key, String value) {
         saveValue(ctx, key, value);
     }
@@ -41,18 +20,6 @@ public class SharedPreferencesUtil {
             return (String) value;
         }
         return "";
-    }
-
-    public static void saveIntValue(Context ctx, String key, int value) {
-        saveValue(ctx, key, value);
-    }
-
-    public static Integer getIntValue(Context ctx, String key) {
-        Object value = getValue(ctx, key, 0);
-        if (value != null && (value instanceof Integer)) {
-            return (Integer) value;
-        }
-        return 0;
     }
 
     public static void saveLongValue(Context ctx, String key, long value) {
@@ -66,7 +33,6 @@ public class SharedPreferencesUtil {
         }
         return 0L;
     }
-
 
     /**
      * 将数据保存到本地
