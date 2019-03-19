@@ -3,7 +3,9 @@ package app.lbs.com.lbsapp.ui;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -32,6 +34,7 @@ public class InsuranceActivity extends AppCompatActivity {
     private InsuranceAdapter insuranceAdapter;
     private List<Insurance> insuranceList = new ArrayList<>();
     private ListView listView;
+    private TextView tagTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,23 @@ public class InsuranceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insurance);
         insuranceAdapter = new InsuranceAdapter(this, R.layout.item_insurance, insuranceList);
         listView = findViewById(R.id.list_insurance);
+        tagTv = findViewById(R.id.tv_tag);
         listView.setAdapter(insuranceAdapter);
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                //监听第一个可见的
+                if (firstVisibleItem < insuranceList.size()) {
+                    Insurance insurance = insuranceList.get(firstVisibleItem);
+                    tagTv.setText(insurance.getStartTime());
+                }
+            }
+        });
         getData();
     }
 
@@ -61,7 +80,19 @@ public class InsuranceActivity extends AppCompatActivity {
                 ResultDTO<List<Insurance>> resultDTO = gson.fromJson(json, type);
                 if (resultDTO.getStatus() == 0) {
                     insuranceList.clear();
-                    insuranceList.addAll(resultDTO.getResult());
+                    List<Insurance> list = resultDTO.getResult();
+                    if (list != null) {
+                        for (int i = 0; i < list.size(); i++) {
+                            insuranceList.add(list.get(i));
+                            insuranceList.add(list.get(i));
+                            insuranceList.add(list.get(i));
+                            insuranceList.add(list.get(i));
+                            insuranceList.add(list.get(i));
+                            insuranceList.add(list.get(i));
+                        }
+                    }
+
+//                    insuranceList.addAll(resultDTO.getResult());
 
                     runOnUiThread(new Runnable() {
                         @Override

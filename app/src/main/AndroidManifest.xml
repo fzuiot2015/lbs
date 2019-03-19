@@ -67,6 +67,7 @@
         <activity android:name=".ui.InsuranceActivity" />
         <activity android:name=".ui.AccidentActivity" />
         <activity android:name=".ui.ExamActivity" />
+        <activity android:name=".ui.AccidentDetailActivity" />
         <activity android:name=".ui.LimitActivity" />
         <activity android:name=".ui.UserInfoActivity"></activity>
 
